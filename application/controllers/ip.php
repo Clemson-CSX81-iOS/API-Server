@@ -17,6 +17,10 @@ class IP extends REST_Controller
 	}
 	public function report_post()
 	{
-		$this->response(array('RECIVED_HOST' => $this->input->post('host'),'RECIVED_IP' => $this->input->post('ip')),201);
+		$ip = "none";
+		if (!isset($this->input->post('ip'))){
+			$ip = $this->input->post('ip');
+		}
+		$this->response(array('RECIVED_HOST' => $this->input->post('host'),'RECIVED_IP' => $ip),201);
 	}
 }
