@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://apis.dedmonson.com';
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
