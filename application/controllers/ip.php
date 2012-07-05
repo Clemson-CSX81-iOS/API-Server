@@ -11,8 +11,12 @@ class IP extends REST_Controller
 		$this->response(array('CLIENT_IP' => $this->input->server('REMOTE_ADDR')),201);
 	}
 	
+	public function report_get()
+	{
+		
+	}
 	public function report_post()
 	{
-		$this->response(array('RECIVED_IP' => $this->input->post('ip')),201);
+		$this->response(array('RECIVED_HOST' => $this->input->post('host'),'RECIVED_IP' => $this->input->post('ip')),201);
 	}
 }
