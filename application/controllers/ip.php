@@ -13,7 +13,11 @@ class IP extends REST_Controller
 
 	public function mine_get()
 	{
-		$this->response(array('CLIENT_IP' => $this->input->server('REMOTE_ADDR')),201);
+		date_default_timezone_set('US/Eastern');
+		
+		$date = date('M d y - h:i:s A');
+		
+		$this->response(array('CLIENT_IP' => $this->input->server('REMOTE_ADDR'), 'DATE' => $date),201);
 	}
 	
 	public function records_get()
@@ -43,6 +47,10 @@ class IP extends REST_Controller
 	
 	public function report_post()
 	{
+		date_default_timezone_set('US/Eastern');
+		
+		$date = date('M d y - h:i:s A');
+		
 		$host =  $this->post('host');
 		$user = $this->post('user');
 		
@@ -51,7 +59,7 @@ class IP extends REST_Controller
 			$ip = $this->post('ip');
 		}
 		
-		$response = array('RECIVED_HOST' => $host,'HOST_IP' => $ip, 'USER' => $user);
+		$response = array('RECIVED_HOST' => $host,'HOST_IP' => $ip, 'USER' => $user, 'DATE' => $date);
 		
 		$jsonObj = read_file('./data.json');
 		if ($jsonObj) {
@@ -63,7 +71,7 @@ class IP extends REST_Controller
 		$success = write_file('./data.json',json_encode($jsonObj));
 		
 		$response['SUCCESS'] = (!$success) ? "NO" : "YES";
-		$response['INFO'] = $this->input->server('REDIRECT_SCRIPT_URI');
+		//$response['INFO'] = $this->input->server('REDIRECT_SCRIPT_URI');
 		
 		$this->response($response,201);
 	}
