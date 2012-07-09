@@ -59,7 +59,7 @@ class IP extends REST_Controller
 			$ip = $this->post('ip');
 		}
 		
-		$response = array('RECIVED_HOST' => $host,'HOST_IP' => $ip, 'USER' => $user, 'DATE' => $date);
+		$response = array('RECEIVED_HOST' => $host,'HOST_IP' => $ip, 'USER' => $user, 'DATE' => $date);
 		
 		$jsonObj = read_file('./data.json');
 		if ($jsonObj) {
